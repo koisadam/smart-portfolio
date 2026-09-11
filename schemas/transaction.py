@@ -1,5 +1,8 @@
 from datetime import datetime, timezone
 from sqlmodel import SQLModel, Field, Relationship
+from typing import TYPE_CHECKING
+if TYPE_CHECKING:
+    from schemas.portfolio import Portfolio
 
 class TransactionBase(SQLModel):
     portfolio_id: int = Field(index=True, foreign_key="portfolio.id", ondelete="CASCADE")

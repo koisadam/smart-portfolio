@@ -1,6 +1,6 @@
 from fastapi import FastAPI
-from routers import portfolios, transactions
-from database import create_db_and_tables
+from api.routers import portfolios, transactions
+from core.database import create_db_and_tables
 from contextlib import asynccontextmanager
 
 @asynccontextmanager
