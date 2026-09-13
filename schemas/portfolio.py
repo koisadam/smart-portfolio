@@ -1,7 +1,9 @@
 from datetime import datetime, timezone
 from sqlmodel import SQLModel, Field, Relationship
 from enums.portfolio import PortfolioType, Currency
-
+from typing import TYPE_CHECKING
+if TYPE_CHECKING:
+    from schemas.transaction import Transaction, TransactionPublic
 
 class PortfolioBase(SQLModel):
     name: str = Field(index=True)
@@ -12,6 +14,7 @@ class PortfolioBase(SQLModel):
 
 class Portfolio(PortfolioBase, table=True):
     id: int | None = Field(default=None, primary_key=True)
+    user_id: int = Field(index=True, foreign_key="user.id", ondelete="CASCADE")
     created_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
     updated_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc), sa_column_kwargs={"onupdate": lambda: datetime.now(timezone.utc)})
 

@@ -19,7 +19,6 @@ class Transaction(TransactionBase, table=True):
 class TransactionCreate(TransactionBase):
     pass
 
-
 class TransactionUpdate(SQLModel):
     ticker: str | None = None
     quantity: float | None = None

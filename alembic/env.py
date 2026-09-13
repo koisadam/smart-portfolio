@@ -19,6 +19,7 @@ if config.config_file_name is not None:
 from sqlmodel import SQLModel
 from schemas.portfolio import Portfolio
 from schemas.transaction import Transaction
+from schemas.user import User
 from core.config import get_settings
 
 config.set_main_option("sqlalchemy.url", get_settings().database_url)
